@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)https://www.gdut.run/main -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外出登记二维码</title>
+<style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+
+    li {
+      list-style: none
+    }
+
+    img {
+      vertical-align: top;
+      border: none
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Segoe UI, Arial, Roboto, PingFang SC, miui, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .time {
+      padding: 20px 0;
+      text-align: center;
+      font-size: 20px;
+      background-color: #fff;
+    }
+
+    .ewm {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .ewm img {
+      width: 120px;
+      height: 120px;
+    }
+
+    .goOutTime {
+      padding: 16px 16px 8px;
+      color: #969799;
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    .startTime,
+    .inputTime {
+      font-weight: bold;
+      font-size: 14px;
+      color: #333;
+      float: right;
+    }
+
+    .startTime {
+      padding-right: 5px;
+    }
+
+    .startTime::after {
+      position: absolute;
+      box-sizing: border-box;
+      content: " ";
+      pointer-events: none;
+      right: 16px;
+      bottom: 0;
+      left: 16px;
+      border-bottom: 1px solid #ebedf0;
+      transform: scaleY(.5);
+    }
+
+    .student {
+      color: #323233;
+      line-height: 24px;
+	width:200px;
+      float: right;
+      color: #969799;
+
+      flex:1;
+      position:relative;
+      overflow:hidden;
+      text-align:right;
+      vertical-align:middle;
+      word-wrap:break-word
+		word-break: break-all;
+    }
+
+    .s {
+      font-size: 14px;
+    }
+
+    .white {
+      background: #fff;
+      color: #323233;
+    }
+   </style>
+</head>
+<body>
+<div id="time" class="time">2022-10-05 21:41:41</div>
+<div class="ewm" id="qrcode"><img src="https://raw.githubusercontent.com/zhaobutter/KeepPicture/main/qrcode.png"></div>
+<p class="goOutTime">外出时间</p>
+<div class="white" style="padding: 12px 16px;position: relative;">
+<span>离校时间</span>
+<span class="inputTime"></span>
+
+</div>
+<div class="white" style="padding: 12px 16px;position: relative;">
+<span>回校时间</span>
+<span class="inputTime">22:22</span>
+
+</div>
+<p class="goOutTime" style="padding-top: 26px;">学生信息</p>
+<div class="white s" style="padding: 12px 16px;position: relative;">
+<span>姓名</span>
+<span class="student">赵鱼</span>
+</div>
+<div class="white s" style="padding: 12px 16px;position: relative;">
+<span>学号</span>
+<span class="student">3121010039</span>
+</div>
+<div class="white s" style="padding: 12px 16px;position: relative;">
+<span>学院</span>
+<span class="student">国际教育学院</span>
+</div>
+<div class="white s" style="padding: 10px 16px 30px 16px;position: relative;">
+<span>专业</span>
+<span class="student">计算机科学与技术(国际班)</span>
+</div>
+<div class="white s" style="padding: 10px 16px 36px 16px;position: relative;">
+<span>班级</span>
+<span class="student">计算机科学与技术(国际班)21(1)</span>
+</div>
+<script>
+    let time = document.getElementById('time')
+
+    let inputTime = document.getElementsByClassName('inputTime')
+    let student = document.getElementsByClassName('student')
+    var input1;
+    function show_date_time() {
+      window.setTimeout("show_date_time()", 1000);
+      var now = new Date();
+      var YY = now.getFullYear();
+      var MM = now.getMonth() + 1;
+      MM = MM < 10 ? '0' + MM : MM
+      var DD = now.getDate();
+      DD = DD < 10 ? '0' + DD : DD
+
+      var hh = now.getHours();
+      hh = hh < 10 ? '0' + hh : hh
+      var mm = now.getMinutes();
+      mm = mm < 10 ? '0' + mm : mm
+      var ss = now.getTime() % 60000;
+      ss = (ss - (ss % 1000)) / 1000; //然后，将得到的毫秒数再处理成秒
+      ss = ss < 10 ? '0' + ss : ss
+      time.innerHTML = YY + "-" + MM + "-" + DD + ' ' + hh + ":" + mm + ":" + ss;
+      input1=YY + "-" + MM + "-" + DD + ' 0' + 8 + ":" + 30;
+      input2=YY + "-" + MM + "-" + DD + ' ' + 22 + ":" + 50;
+    }
+    show_date_time();
+    inputTime[0].innerHTML = input1;
+    inputTime[1].innerHTML = input2;
+  </script>
+
+</body></html>
